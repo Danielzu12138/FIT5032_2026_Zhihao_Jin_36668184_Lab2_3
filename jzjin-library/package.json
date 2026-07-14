@@ -12,6 +12,8 @@
     "vite": "^8.1.0"
   },
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "@primevue/themes": "^4.5.3",
+    "bootstrap": "^5.3.8",
+    "primevue": "^4.5.5"
   }
 }
