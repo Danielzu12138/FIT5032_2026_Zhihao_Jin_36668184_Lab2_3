@@ -15,20 +15,41 @@
         <li class="nav-item" v-if="isAuthenticated">
           <button class="nav-link btn btn-sm btn-danger" @click="logout">Logout</button>
         </li>
+        <li class="nav-item">
+          <router-link to="/Firelogin" class="nav-link" active-class="active">Firebase Login</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/FireRegister" class="nav-link" active-class="active">Register</router-link>
+        </li>
       </ul>
     </header>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { isAuthenticated } from '../router/index'
+import { signOut, onAuthStateChanged } from "firebase/auth"
+import { auth } from '@/main.js'
 
 const router = useRouter()
+const isAuthenticated = ref(false)
 
-const logout = () => {
-  isAuthenticated.value = false
-  router.push('/login')
+onMounted(() => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isAuthenticated.value = true
+    } else {
+      isAuthenticated.value = false
+    }
+  })
+})
+
+const logout = async () => {
+  console.log("User before logout:", auth.currentUser)
+  await signOut(auth)
+  console.log("User after logout:", auth.currentUser)
+  router.push('/Firelogin')
 }
 </script>
 
