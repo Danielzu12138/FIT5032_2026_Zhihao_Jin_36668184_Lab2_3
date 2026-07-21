@@ -21,6 +21,9 @@
         <li class="nav-item">
           <router-link to="/FireRegister" class="nav-link" active-class="active">Register</router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/addbook" class="nav-link" active-class="active">Add Book</router-link>
+        </li>
       </ul>
     </header>
   </div>
@@ -30,7 +33,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { signOut, onAuthStateChanged } from "firebase/auth"
-import { auth } from '@/main.js'
+import { auth } from '../firebase/init.js'
 
 const router = useRouter()
 const isAuthenticated = ref(false)
