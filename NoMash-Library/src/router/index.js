@@ -7,6 +7,8 @@ import DeniedView from '../views/DeniedView.vue'
 import FirebaseSigninView from '@/views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
 import AddBookView from '../views/AddBookView.vue'
+import WeatherView from '../views/WeatherView.vue';
+import CountBookAPI from '../views/CountBookAPI.vue'
 export const isAuthenticated = ref(false)
 
 
@@ -46,6 +48,16 @@ const routes = [
     path: '/addbook',
     name: 'addBook',
     component: AddBookView
+  },
+  {
+    path: '/Weather',
+    name: 'Weather',
+    component: WeatherView
+  },
+  {
+    path: '/CountBookAPI',
+    name: 'CountBookAPI',
+    component: CountBookAPI
   }
 ]
 
