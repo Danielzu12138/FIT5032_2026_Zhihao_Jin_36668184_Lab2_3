@@ -19,16 +19,18 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
+      working-directory: NoMash-Library
       run: npm ci
 
     - name: Build
+      working-directory: NoMash-Library
       run: npm run build
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         branch: gh-pages
-        folder: dist
+        folder: NoMash-Library/dist
 
 permissions:
   contents: write
