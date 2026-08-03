@@ -1,3 +1,5 @@
+/* global process */
+
 import { createRouter, createWebHistory } from 'vue-router'
 import { ref } from 'vue'
 import HomeView from '../views/HomeView.vue'
@@ -10,6 +12,12 @@ import AddBookView from '../views/AddBookView.vue'
 import WeatherView from '../views/WeatherView.vue';
 import CountBookAPI from '../views/CountBookAPI.vue'
 export const isAuthenticated = ref(false)
+
+const base = process.env.CF_PAGES
+  ? '/'
+  : process.env.NODE_ENV === 'production'
+    ? '/FIT5032_2026_Zhihao_Jin_36668184_Lab2_3/'
+    : '/'
 
 
 const routes = [
@@ -62,7 +70,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(base),
   routes
 })
 
